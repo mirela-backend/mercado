@@ -3,13 +3,17 @@ package br.com.senai.backend.sistema_mercado.models;
 import java.time.LocalDate;
 import java.util.List;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "funcionario")
 public class Funcionario {
     
     @Id 
@@ -33,7 +37,7 @@ public class Funcionario {
     @JoinTable(
         name="funcionario_mercadoria",
         joinColumns=@JoinColumn(name="id_funcionario", referencedColumnName="id"),
-        inverseJoinColumns=@JoinColumn(name="id_nmercadoria", referencedColumnName = "id")
+        inverseJoinColumns=@JoinColumn(name="id_mercadoria", referencedColumnName = "id_mercadoria")
     )
     private List<Mercadoria> mercadorias;
 
